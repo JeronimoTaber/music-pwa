@@ -1,0 +1,8 @@
+{
+  "name": "music_pwa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "3da17af7"
+}
