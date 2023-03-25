@@ -1,0 +1,25 @@
+ion-header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  ion-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  ion-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  ion-item h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  ion-item p {
+    font-size: 1.2rem;
+  }
