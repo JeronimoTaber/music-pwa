@@ -6,6 +6,26 @@ import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
+// window.addEventListener('fetch', (event: any) => {
+//   event.respondWith(
+//     caches.match(event.request).then(response => {
+//       if (response) {
+//         return response;
+//       }
+
+//       return fetch(event.request).then(response => {
+//         const clonedResponse = response.clone();
+//         caches.open('my-cache').then(cache => {
+//           cache.put(event.request, clonedResponse);
+//         });
+
+//         return response;
+//       });
+//     })
+//   );
+// });
+
+
 root.render(
   <React.StrictMode>
     <App />

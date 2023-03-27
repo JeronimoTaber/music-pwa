@@ -76,5 +76,47 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+// Cuando hay una llamada de recuperación responder, si existe, con la cache
+self.addEventListener('fetch', (event) => {
+  console.log('fetch')
+  event.respondWith(
+    caches.match(event.request).then((resp) => {
+      console.log("busco en la cache")
+      return resp || fetch(event.request).then((response) => {
+        console.log("no encontró en la cache, busca en la red")
+        return caches.open('v1').then((cache) => {
+          cache.put(event.request, response.clone());
+          console.log("Guarda en la cache", event.request)
+          return response;
+        });
+      });
+    })
+  );
+});
+// // self.addEventListener('fetch', (event) => {
+// //   console.log('fetch')
+// //   event.respondWith(
+// //     caches.match(event.request).then((resp) => {
+// //       console.log("busco en la cache")
+// //       return resp || fetch(event.request).then((response) => {
+// //         console.log("no encontró en la cache, busca en la red")
+// //         return caches.open('v1').then((cache) => {
+// //           cache.put(event.request, response.clone());
+// //           console.log("Guarda en la cache", event.request)
+// //           return response;
+// //         });
+// //       }).catch((err) => {
+// //         console.log('Error fetching data:', err);
+// //         return caches.match(event.request).then((resp) => {
+// //           if (resp instanceof Response) {
+// //             return resp;
+// //           }
+// //           throw new TypeError('The cached response is not a valid Response object.');
+// //         });
+// //       });
+// //     })
+// //   );
+// // });
+
 
 // Any other custom service worker logic can go here.
